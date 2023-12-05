@@ -22,28 +22,7 @@ function GlobalLayouts({ children }) {
       api[type](message)
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-        axiosInstance.get("/estalogado").then((response) => {
-        }).catch((erro) => {
-            if (erro?.response?.status === 401) {
-                openNotificationWithIcon({ message: "Token expirado.", description: "Atenção, Voce sera deslogado.." }, "warning");
 
-                setTimeout(() => {
-                    navigate("/login");
-                }, 5000);
-                localStorage.removeItem("usuario");
-
-            }
-            if (erro?.response?.status !== 403) {
-                console.log("");
-            }
-        });
-    }, 1000);
-
-    return () => clearInterval(interval);
-    // eslint-disable-next-line
-}, []);
 
   useEffect(() => {
     if (!darkMode) {
