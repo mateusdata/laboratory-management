@@ -25,13 +25,16 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (email, password) => {
+    const data = {
+      data: {
+        email,
+        password
+      }
+    }
     !email ? 
     openNotificationWithIcon({ message: "Informe todos os campos" }, "error")
     :
-    axiosInstance.post("https://bug-free-fishstick-g799gr7x5g6f69g-3000.preview.app.github.dev/api/login", {data:{
-      email,
-      password,
-    }}).then((response) => {
+    axiosInstance.post("/login", data).then((response) => {
       console.log(response);
       const key = 'updatable';
       if (response.status === 200) {
@@ -39,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         notification.destroy(key);
         const userLocal = {
           nome: response.data.nome,
-          email,
+          email:data.data.email,
           token: response.data.token,
         }; localStorage.setItem("usuario", JSON.stringify(userLocal));
         setUser(userLocal);

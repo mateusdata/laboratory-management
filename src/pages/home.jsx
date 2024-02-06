@@ -67,15 +67,7 @@ function Home() {
 
         <div class="bg-gray-50 rou p-4 w-full">
           <div class="grid grid-cols-1w-full  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {users?.map((item) => (
-              <div key={item?.email} class="bg-white w-full border border-gray-600 p-4 rounded-lg shadow-md">
-                <span class="text-blue-500 text-lg font-bold mb-2">{`${"Murilo"} `}</span>
-                <div class="flex flex-row flex-nowrap gap-2">
-                  <MdMarkEmailUnread color="orange" size="24" />
-                  <span class="text-gray-600">{`Email: ${"teste@gmail.com"}`}</span>
-                </div>
-              </div>
-            ))}
+           
           </div>
         </div>
       </div>
